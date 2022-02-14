@@ -5,12 +5,15 @@ import QUERY_GETNFTS from "@queries/NFTS.graphql";
 import styles from "../styles/Home.module.scss";
 import { NftCardEntity, GetNftsQuery } from "generated/graphql";
 import { fieldNameFromStoreName } from "@apollo/client/cache";
+import { useState } from "react";
 
 interface NFTTypes {
   nft: NftCardEntity[];
 }
 
 const Home = ({ nft }: NFTTypes) => {
+  const [test, setTest] = useState(0);
+
   return (
     <div className={styles.wrapperContainer}>
       <div className={styles.cardContainer}>

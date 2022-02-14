@@ -1,14 +1,16 @@
 import styles from "./navbar.module.scss";
+import asd from "../../public/img/logocrop.png";
+import Image from "next/image";
 
 const Navbar = () => {
   return (
     <>
       <div className={styles.navbar}>
         <div className={styles.navBtns}>
-          <h1 className={styles.logo}>Logo</h1>
+          <Image src={asd} className={styles.logo} alt="ERROR" />
           <button>Home</button>
           <button>Shop</button>
-          <button>New</button>
+          <button>About</button>
         </div>
         <footer>Legit Shizzle®</footer>
       </div>

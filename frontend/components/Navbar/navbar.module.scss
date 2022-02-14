@@ -8,16 +8,13 @@
   justify-content: space-between;
 
   .navBtns {
+    margin: 12px 10px;
+
     .logo {
-      background-color: red;
-      border: 1px solid black;
       width: 100%;
       height: 50px;
-      margin-top: 5px;
       margin-bottom: 50px;
     }
-
-    margin: 0 10px;
 
     button {
       width: 100%;
@@ -25,6 +22,7 @@
       margin-bottom: 10px;
     }
   }
+
   footer {
     color: slateblue;
     text-align: center;

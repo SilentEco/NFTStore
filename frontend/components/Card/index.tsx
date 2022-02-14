@@ -1,29 +1,38 @@
 import Image from "next/image";
 import styles from "./cardstyle.module.scss";
 import { NftCard, NftCardEntity } from "generated/graphql";
+import { useState } from "react";
+import Modal from "../Modal/index";
 
 interface CardTypes {
   props: NftCardEntity["attributes"];
 }
 
 const Card = ({ props }: CardTypes) => {
-  console.log(props?.NFT?.data?.attributes?.url!);
-  console.log(props);
+  const [modalOpen, setModalOpen] = useState(false);
+  const close = () => setModalOpen(false);
+  const open = () => setModalOpen(true);
+
   return (
     <div className={styles.card}>
       <h1>{props?.Title}</h1>
-      <div className={styles.nftContainer}>
+      <div
+        className={styles.nftContainer}
+        onClick={() => {
+          modalOpen ? close() : open();
+        }}
+      >
         <img
           src={"//localhost:1337" + props?.NFT?.data?.attributes?.url!}
           alt="ERROR"
         />
       </div>
-      <button>Buy</button>
       <p>
         Price: <span>$</span>
         <span>{props?.Price}</span>
       </p>
-      <article>Created: {props?.Created}</article>
+      <button>Buy</button>
+      {modalOpen && <Modal handleClose={close} nft={props} />}
     </div>
   );
 };

@@ -1,12 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&display=swap");
+
 .card {
   display: grid;
   grid-template-rows: repeat(3, auto);
   justify-items: center;
-  background-color: ivory;
+  background-color: ghostwhite;
   border: 1px black solid;
   width: 280px;
-  height: 550px;
-
+  height: 430px;
   .nftContainer {
     width: 100%;
     height: 280px;
@@ -26,6 +27,8 @@
   }
 
   h1 {
+    font-family: "Oswald";
+    margin-top: 8px;
     font-size: 30px;
     text-align: center;
   }
