@@ -1,0 +1,15 @@
+query GetNFTS() {
+  accessories() {
+    data {
+      attributes {
+
+
+
+        ////// GÖR EN QUERY /////
+          
+          
+          
+            }
+          }
+}
+    

@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "nft_cards",
+  "info": {
+    "singularName": "nft-card",
+    "pluralName": "nft-cards",
+    "displayName": "NFT card",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "NFT": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    },
+    "Artist": {
+      "type": "string"
+    },
+    "Created": {
+      "type": "date"
+    },
+    "Price": {
+      "type": "decimal"
+    }
+  }
+}

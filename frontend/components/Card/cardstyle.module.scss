@@ -1,0 +1,25 @@
+.card {
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  justify-items: center;
+  background-color: gold;
+  border: 1px black solid;
+  width: 280px;
+  height: 400px;
+
+  h1 {
+    font-size: 50px;
+    text-align: center;
+  }
+
+  button {
+    margin: 3px 0;
+    width: 5rem;
+    height: 2rem;
+  }
+
+  span {
+    color: red;
+    text-shadow: #408f7c 1px 1px 1px;
+  }
+}
