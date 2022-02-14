@@ -1,15 +1,19 @@
-query GetNFTS() {
-  accessories() {
+query GetNFTS {
+  nftCards {
     data {
       attributes {
-
-
-
-        ////// GÖR EN QUERY /////
-          
-          
-          
+        Title
+        NFT {
+          data {
+            attributes {
+              url
             }
           }
+        }
+        Artist
+        Created
+        Price
+      }
+    }
+  }
 }
-    

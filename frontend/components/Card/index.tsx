@@ -1,25 +1,29 @@
 import Image from "next/image";
 import styles from "./cardstyle.module.scss";
+import { NftCard, NftCardEntity } from "generated/graphql";
 
-const Card = () => {
+interface CardTypes {
+  props: NftCardEntity["attributes"];
+}
+
+const Card = ({ props }: CardTypes) => {
+  console.log(props?.NFT?.data?.attributes?.url!);
+  console.log(props);
   return (
     <div className={styles.card}>
-      <h1>.:Monkey:.</h1>
-      <Image
-        src="/../public/img/Untitled.png"
-        alt="asd"
-        width="240px"
-        height="300px"
-      />
+      <h1>{props?.Title}</h1>
+      <div className={styles.nftContainer}>
+        <img
+          src={"//localhost:1337" + props?.NFT?.data?.attributes?.url!}
+          alt="ERROR"
+        />
+      </div>
       <button>Buy</button>
       <p>
-        Price: <span>$50</span>
+        Price: <span>$</span>
+        <span>{props?.Price}</span>
       </p>
-      <article>
-        Artist: John Denver
-        <br />
-        Created: 2022-02-11
-      </article>
+      <article>Created: {props?.Created}</article>
     </div>
   );
 };

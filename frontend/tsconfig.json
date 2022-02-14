@@ -15,12 +15,12 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@queries/": ["lib/gql/queries/"],
-      "@components/": ["components/"],
-      "@styles/": ["styles/"]
+      "@queries/*": ["lib/gql/queries/*"],
+      "@components/*": ["components/*"],
+      "@styles/*": ["styles/*"]
     },
     "strict": true
   },
-  "include": ["next-env.d.ts", "/*.ts", "/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

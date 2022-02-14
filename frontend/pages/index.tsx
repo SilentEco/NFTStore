@@ -1,25 +1,22 @@
 import type { NextPage, GetStaticProps } from "next";
 import { initializeApollo } from "../lib/apollo";
 import Card from "../components/Card";
-
+import QUERY_GETNFTS from "@queries/NFTS.graphql";
 import styles from "../styles/Home.module.scss";
+import { NftCardEntity, GetNftsQuery } from "generated/graphql";
+import { fieldNameFromStoreName } from "@apollo/client/cache";
 
-const Home: NextPage = () => {
+interface NFTTypes {
+  nft: NftCardEntity[];
+}
+
+const Home = ({ nft }: NFTTypes) => {
   return (
     <div className={styles.wrapperContainer}>
       <div className={styles.cardContainer}>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {nft!.map((nfts, index) => {
+          return <Card props={nfts.attributes} key={index} />;
+        })}
       </div>
     </div>
   );
@@ -27,14 +24,13 @@ const Home: NextPage = () => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const client = initializeApollo();
-  const { data: pageData } = await client.query({
-    query: QUERY_PAGE,
-    variables: { locale, path: "pdf" },
+  const { data }: { data: GetNftsQuery } = await client.query({
+    query: QUERY_GETNFTS,
   });
 
   return {
     props: {
-      page: pageData,
+      nft: data.nftCards?.data,
     },
   };
 };
