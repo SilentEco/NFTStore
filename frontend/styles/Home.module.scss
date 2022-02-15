@@ -39,6 +39,9 @@
     box-shadow: 0px 1px 1px black;
     border-radius: 2px;
     margin-bottom: 10px;
+    color: #cfd9dd;
+    text-shadow: 2px 1px #4f535583;
+    padding: 10px;
   }
 
   .shopbtn {
@@ -51,5 +54,9 @@
   .shopbtn button {
     border-radius: 2px;
     font-size: 30px;
+    &:hover {
+      font-size: 31px;
+      border: 1px solid black;
+    }
   }
 }

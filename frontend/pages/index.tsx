@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "../styles/Home.module.scss";
 
 const Home = () => {
@@ -19,7 +20,9 @@ const Home = () => {
         </article>
       </div>
       <div className={styles.shopbtn}>
-        <button>Check out the shop</button>
+        <Link href="/shop" passHref>
+          <button>Check out the shop</button>
+        </Link>
       </div>
     </div>
   );
