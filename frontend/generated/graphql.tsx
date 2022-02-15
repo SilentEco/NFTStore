@@ -381,13 +381,12 @@ export type MutationUploadArgs = {
 
 export type NftCard = {
   __typename?: 'NftCard';
-  Artist?: Maybe<Scalars['String']>;
   Created?: Maybe<Scalars['Date']>;
+  Description?: Maybe<Scalars['String']>;
   NFT?: Maybe<UploadFileEntityResponse>;
   Price?: Maybe<Scalars['Float']>;
   Title?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['DateTime']>;
-  publishedAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
@@ -409,8 +408,8 @@ export type NftCardEntityResponseCollection = {
 };
 
 export type NftCardFiltersInput = {
-  Artist?: InputMaybe<StringFilterInput>;
   Created?: InputMaybe<DateFilterInput>;
+  Description?: InputMaybe<StringFilterInput>;
   Price?: InputMaybe<FloatFilterInput>;
   Title?: InputMaybe<StringFilterInput>;
   and?: InputMaybe<Array<InputMaybe<NftCardFiltersInput>>>;
@@ -418,17 +417,15 @@ export type NftCardFiltersInput = {
   id?: InputMaybe<IdFilterInput>;
   not?: InputMaybe<NftCardFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<NftCardFiltersInput>>>;
-  publishedAt?: InputMaybe<DateTimeFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
 export type NftCardInput = {
-  Artist?: InputMaybe<Scalars['String']>;
   Created?: InputMaybe<Scalars['Date']>;
+  Description?: InputMaybe<Scalars['String']>;
   NFT?: InputMaybe<Scalars['ID']>;
   Price?: InputMaybe<Scalars['Float']>;
   Title?: InputMaybe<Scalars['String']>;
-  publishedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type Pagination = {
@@ -445,11 +442,6 @@ export type PaginationArg = {
   pageSize?: InputMaybe<Scalars['Int']>;
   start?: InputMaybe<Scalars['Int']>;
 };
-
-export enum PublicationState {
-  Live = 'LIVE',
-  Preview = 'PREVIEW'
-}
 
 export type Query = {
   __typename?: 'Query';
@@ -487,7 +479,6 @@ export type QueryNftCardArgs = {
 export type QueryNftCardsArgs = {
   filters?: InputMaybe<NftCardFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
@@ -850,4 +841,4 @@ export type UsersPermissionsUserRelationResponseCollection = {
 export type GetNftsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetNftsQuery = { __typename?: 'Query', nftCards?: { __typename?: 'NftCardEntityResponseCollection', data: Array<{ __typename?: 'NftCardEntity', attributes?: { __typename?: 'NftCard', Title?: string, Artist?: string, Created?: any, Price?: number, NFT?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } } } } }> } };
+export type GetNftsQuery = { __typename?: 'Query', nftCards?: { __typename?: 'NftCardEntityResponseCollection', data: Array<{ __typename?: 'NftCardEntity', attributes?: { __typename?: 'NftCard', Title?: string, Description?: string, Created?: any, Price?: number, NFT?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } } } } }> } };

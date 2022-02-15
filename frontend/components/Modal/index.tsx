@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import styles from "./Modal.module.scss";
 import React, { useState } from "react";
 import Card from "@components/Card";
+import Button from "@components/Card/Button";
 
 const dropIn = {
   hidden: {
@@ -43,25 +44,14 @@ const Modal = ({ handleClose, nft }: any) => {
         </div>
         <div className={styles.description}>
           <h1>{oneNFT!.Title}</h1>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio
-            minima eum nobis accusantium hic autem accusamus, sed iusto, nostrum
-            quod totam! Amet laboriosam soluta unde quisquam quis blanditiis hic
-            inventore! Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Amet natus excepturi dolorem suscipit laudantium delectus nisi!
-            Distinctio quae doloremque aut blanditiis dignissimos vitae quaerat
-            voluptates provident, dolorum quisquam odit praesentium! Lorem,
-            ipsum dolor sit amet consectetur adipisicing elit. Asperiores odit
-            dolores incidunt sapiente explicabo architecto at ex consequuntur,
-            cumque unde officia inventore libero ab modi laborum! Nemo alias
-            necessitatibus ipsa?
-          </p>
+          <p>{oneNFT!.Description}</p>
           <br />
           <h3>Created: {oneNFT!.Created}</h3>
           <h2>
             Price: <span>$</span>
             <span>{oneNFT!.Price!}</span>
           </h2>
+          <Button />
         </div>
       </motion.div>
     </Backdrop>

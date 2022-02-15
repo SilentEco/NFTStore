@@ -3,6 +3,7 @@ import styles from "./cardstyle.module.scss";
 import { NftCard, NftCardEntity } from "generated/graphql";
 import { useState } from "react";
 import Modal from "../Modal/index";
+import Button from "./Button";
 
 interface CardTypes {
   props: NftCardEntity["attributes"];
@@ -31,7 +32,7 @@ const Card = ({ props }: CardTypes) => {
         Price: <span>$</span>
         <span>{props?.Price}</span>
       </p>
-      <button>Buy</button>
+      <Button />
       {modalOpen && <Modal handleClose={close} nft={props} />}
     </div>
   );

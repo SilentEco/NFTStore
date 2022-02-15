@@ -1,6 +1,7 @@
 import styles from "./navbar.module.scss";
 import asd from "../../public/img/logocrop.png";
 import Image from "next/image";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -8,9 +9,15 @@ const Navbar = () => {
       <div className={styles.navbar}>
         <div className={styles.navBtns}>
           <Image src={asd} className={styles.logo} alt="ERROR" />
-          <button>Home</button>
-          <button>Shop</button>
-          <button>About</button>
+          <Link href="/" passHref>
+            <button>Home</button>
+          </Link>
+          <Link href="/shop" passHref>
+            <button>Shop</button>
+          </Link>
+          <Link href="/about" passHref>
+            <button>About</button>
+          </Link>
         </div>
         <footer>Legit Shizzle®</footer>
       </div>
