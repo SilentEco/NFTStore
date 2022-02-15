@@ -9,7 +9,7 @@ interface NFTTypes {
   nft: NftCardEntity[];
 }
 
-const Home = ({ nft }: NFTTypes) => {
+const Shop = ({ nft }: NFTTypes) => {
   return (
     <div className={styles.wrapperContainer}>
       <div className={styles.cardContainer}>
@@ -34,4 +34,4 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-export default Home;
+export default Shop;
