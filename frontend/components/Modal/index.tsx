@@ -51,7 +51,7 @@ const Modal = ({ handleClose, nft }: any) => {
             Price: <span>$</span>
             <span>{oneNFT!.Price!}</span>
           </h2>
-          <Button />
+          <Button nft={nft} />
         </div>
       </motion.div>
     </Backdrop>
