@@ -32,7 +32,6 @@ interface IProps {
 }
 
 const Modal = ({ handleClose, nft }: IProps) => {
-  console.log(nft);
   const oneNFT = nft!;
   return (
     <Backdrop onClick={handleClose}>
