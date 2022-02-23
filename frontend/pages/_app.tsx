@@ -1,15 +1,15 @@
 import "../styles/globals.scss";
 import type { AppProps } from "next/app";
 import Navbar from "../components/Navbar";
-import { CashContextProvider } from "context/CashContext";
+import { BasketProvider } from "context/BasketContext";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <div className="globalWrapper">
-      <CashContextProvider>
+      <BasketProvider>
         <Navbar />
-        <Component {...pageProps} />
-      </CashContextProvider>
+        <Component {...pageProps} key={router.asPath} />
+      </BasketProvider>
     </div>
   );
 }

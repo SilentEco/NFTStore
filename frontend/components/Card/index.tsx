@@ -32,8 +32,8 @@ const Card = ({ props }: CardTypes) => {
         Price: <span>$</span>
         <span>{props?.Price}</span>
       </p>
-      <Button nft={props} />
-      {modalOpen && <Modal handleClose={close} nft={props} />}
+      <Button nft={props!} />
+      {modalOpen && <Modal handleClose={close} nft={props!} />}
     </div>
   );
 };

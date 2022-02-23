@@ -1,17 +1,21 @@
-import { useCash } from "context/CashContext";
-import { useState } from "react";
+import { basketContext } from "context/BasketContext";
+import { NftCard } from "generated/graphql";
+import { useContext, useEffect, useReducer, useState } from "react";
 import styles from "../Card/cardstyle.module.scss";
 
-const Button = ({ nft }: any) => {
+interface IProps {
+  nft: NftCard;
+}
+
+const Button = ({ nft }: IProps) => {
   const [purchased, setPurchased] = useState(false);
+  const { amount, setAmount } = useContext(basketContext);
 
-  const { cash, setCash } = useCash();
-
-  const handlePurchase = (price: number) => {
+  const ClickHandler = () => {
+    setAmount(amount + nft.Price!);
     setPurchased(true);
-    let newPrice = cash + price;
-    setCash(newPrice);
   };
+
   if (purchased) {
     return (
       <button disabled className={styles.disabled}>
@@ -20,13 +24,9 @@ const Button = ({ nft }: any) => {
     );
   } else {
     return (
-      <button
-        onClick={() => {
-          handlePurchase(nft.Price);
-        }}
-      >
-        Buy
-      </button>
+      <>
+        <button onClick={() => ClickHandler()}>Buy</button>
+      </>
     );
   }
 };

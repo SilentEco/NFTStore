@@ -4,6 +4,7 @@ import styles from "./Modal.module.scss";
 import React, { useState } from "react";
 import Card from "@components/Card";
 import Button from "@components/Card/Button";
+import { NftCard } from "generated/graphql";
 
 const dropIn = {
   hidden: {
@@ -25,8 +26,12 @@ const dropIn = {
     opacity: 0,
   },
 };
+interface IProps {
+  handleClose: () => void;
+  nft: NftCard;
+}
 
-const Modal = ({ handleClose, nft }: any) => {
+const Modal = ({ handleClose, nft }: IProps) => {
   console.log(nft);
   const oneNFT = nft!;
   return (

@@ -1,33 +1,22 @@
-import { createContext, useContext, useState } from "react";
+import React, { createContext, useState } from "react";
 
-type basketContextProviderProps = {
+interface iProps {
   children: React.ReactNode;
+}
+
+const basketDefaultContext = {
+  amount: 0,
+  setAmount: (_amount: number) => {},
 };
 
-type BasketContextType = {
-  basket: number;
-  setbasket: (c: number) => void;
-};
+export const basketContext = createContext(basketDefaultContext);
 
-const basketDefaultState: BasketContextType = {
-  basket: 0,
-  setbasket: () => {},
-};
-
-export const basketContext =
-  createContext<BasketContextType>(basketDefaultState);
-export const useBasket = () => {
-  return useContext(basketContext);
-};
-
-export const basketContextProvider = ({
-  children,
-}: basketContextProviderProps) => {
-  const [basket, setbasket] = useState(0);
-
-  const value = { basket, setbasket };
+export const BasketProvider = ({ children }: iProps) => {
+  const [amount, setAmount] = useState(basketDefaultContext.amount);
 
   return (
-    <basketContext.Provider value={value}>{children}</basketContext.Provider>
+    <basketContext.Provider value={{ amount, setAmount }}>
+      {children}
+    </basketContext.Provider>
   );
 };
