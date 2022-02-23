@@ -9,14 +9,24 @@ const basketDefaultContext = {
   setAmount: (_amount: number) => {},
 };
 
+const purchasedDefaultContext = {
+  purchased: false,
+  setPurchased: (_purchased: boolean) => {},
+};
+
+export const purchasedContext = createContext(purchasedDefaultContext);
+
 export const basketContext = createContext(basketDefaultContext);
 
 export const BasketProvider = ({ children }: iProps) => {
   const [amount, setAmount] = useState(basketDefaultContext.amount);
+  const [purchased, setPurchased] = useState(purchasedDefaultContext.purchased);
 
   return (
     <basketContext.Provider value={{ amount, setAmount }}>
-      {children}
+      <purchasedContext.Provider value={{ purchased, setPurchased }}>
+        {children}
+      </purchasedContext.Provider>
     </basketContext.Provider>
   );
 };
