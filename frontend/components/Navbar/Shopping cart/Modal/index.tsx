@@ -32,6 +32,13 @@ interface IProps {
 
 export const Modal = ({ handleClose }: IProps) => {
   const { cart } = useContext(cartContext);
+  const handleDelete = (name: string) => {
+    const index = cart.findIndex((i) => {
+      return i.name === name;
+    });
+    cart.splice(index, 1);
+    localStorage.removeItem(`${name}`);
+  };
   return (
     <Backdrop onClick={handleClose}>
       <motion.div
@@ -60,7 +67,7 @@ export const Modal = ({ handleClose }: IProps) => {
                     </h2>
                   </div>
                   <div className={[styles.col, styles.col4].join(" ")}>
-                    <p>Remove</p>
+                    <p onClick={() => handleDelete(name)}>Remove</p>
                   </div>
                 </li>
                 <hr />
