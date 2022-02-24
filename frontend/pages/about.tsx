@@ -1,9 +1,7 @@
+import { useEffect, useState } from "react";
+
 const About = () => {
-  return (
-    <>
-      <p>joh seena</p>
-    </>
-  );
+  return <div></div>;
 };
 
 export default About;

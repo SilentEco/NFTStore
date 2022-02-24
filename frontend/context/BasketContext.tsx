@@ -15,7 +15,6 @@ const cartDefaultContext = {
 };
 
 export const cartContext = createContext(cartDefaultContext);
-
 export const basketContext = createContext(basketDefaultContext);
 
 export const BasketProvider = ({ children }: iProps) => {

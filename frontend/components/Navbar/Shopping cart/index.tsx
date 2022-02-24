@@ -11,7 +11,6 @@ const ShoppingCart = () => {
   const close = () => setModalOpen(false);
   const open = () => setModalOpen(true);
 
-  console.log(cart);
   return (
     <div
       className={styles.shoppingcart}
