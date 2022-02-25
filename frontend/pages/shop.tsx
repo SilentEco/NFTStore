@@ -1,6 +1,7 @@
 import QUERY_GETNFTS from "@queries/NFTS.graphql";
 import { GetNftsQuery, NftCardEntity } from "generated/graphql";
 import type { GetStaticProps } from "next";
+import { useContext } from "react";
 import Card from "../components/Card";
 import { initializeApollo } from "../lib/apollo";
 import styles from "../styles/Shop.module.scss";

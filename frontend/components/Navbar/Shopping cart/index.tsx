@@ -1,29 +1,22 @@
-import { basketContext, cartContext } from "context/BasketContext";
+import { RootState } from "lib/redux/app/store";
+import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import { CgShoppingCart } from "react-icons/cg";
+import { useSelector } from "react-redux";
 import styles from "../navbar.module.scss";
-import Modal from "./Modal";
 
 const ShoppingCart = () => {
-  const { amount } = useContext(basketContext);
-  const { cart } = useContext(cartContext);
-  const [modalOpen, setModalOpen] = useState(false);
-  const close = () => setModalOpen(false);
-  const open = () => setModalOpen(true);
+  const amount = useSelector((state: RootState) => state.amount.price);
 
   return (
-    <div
-      className={styles.shoppingcart}
-      onClick={() => {
-        modalOpen ? close() : open();
-      }}
-    >
+    <div className={styles.shoppingcart}>
       <CgShoppingCart style={{ width: "30px", height: "30px" }} />
-      <p>
-        Total: <span>$</span>
-        {amount}
-      </p>
-      {modalOpen && <Modal handleClose={close} nft={cart!} />}
+      <Link href="/shoppingcart" passHref>
+        <p>
+          Total: <span>$</span>
+          {amount}
+        </p>
+      </Link>
     </div>
   );
 };

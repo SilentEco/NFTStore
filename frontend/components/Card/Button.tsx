@@ -1,6 +1,8 @@
-import { basketContext, cartContext } from "context/BasketContext";
 import { NftCard } from "generated/graphql";
+import { addAmountDispatch, addNFTDispatch } from "lib/redux/dispatch";
+import { addNFT } from "lib/redux/features/nftSlice";
 import { useContext, useEffect, useReducer, useState } from "react";
+import { useDispatch } from "react-redux";
 import styles from "../Card/cardstyle.module.scss";
 
 interface IProps {
@@ -10,9 +12,8 @@ interface IProps {
 type NFT = NftCard & { isDisabled?: boolean };
 
 const Button = ({ nft }: IProps) => {
-  const { amount, setAmount } = useContext(basketContext);
-  const { cart, setCart } = useContext(cartContext);
   const [check, setCheck] = useState(Boolean);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (localStorage.getItem(`${nft!.Title}`) !== null) {
@@ -21,28 +22,26 @@ const Button = ({ nft }: IProps) => {
   }, [check, nft]);
 
   const ClickHandler = () => {
-    setAmount(amount + nft.Price!);
-    const object = {
-      name: nft.Title!,
-      price: nft.Price!,
-      image: nft.NFT?.data?.attributes?.url!,
-    };
-    setCart([...cart, object]);
-    localStorage.setItem(`${nft.Title}`, `${nft.Price}`);
-    nft.isDisabled = true;
+    addNFTDispatch(
+      nft.Title!,
+      nft.Price!,
+      nft.NFT?.data?.attributes?.url!,
+      dispatch
+    );
+    addAmountDispatch(nft.Price!, dispatch);
   };
-
   return (
     <>
-      {check ? (
+      <button onClick={() => ClickHandler()}>Buy</button>
+      {/* {check ? (
         <button disabled={true} onClick={() => ClickHandler()}>
-          Buy
+          In cart
         </button>
       ) : (
         <button disabled={nft.isDisabled} onClick={() => ClickHandler()}>
           Buy
         </button>
-      )}
+      )} */}
     </>
   );
 };
