@@ -11,17 +11,18 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@strapi/plugin-graphql": "4.0.7",
-    "@strapi/plugin-i18n": "4.0.7",
-    "@strapi/plugin-users-permissions": "4.0.7",
-    "@strapi/strapi": "4.0.7",
+    "@strapi/plugin-graphql": "^4.1.5",
+    "@strapi/plugin-i18n": "4.1.5",
+    "@strapi/plugin-users-permissions": "4.1.5",
+    "@strapi/provider-upload-cloudinary": "^4.1.5",
+    "@strapi/strapi": "4.1.5",
     "pg": "8.6.0"
   },
   "author": {
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "ec76739a-cdd4-41af-84ad-cecde82db0a2"
+    "uuid": "5d0480a7-c244-42bb-b1ad-bcd449142418"
   },
   "engines": {
     "node": ">=12.x.x <=16.x.x",

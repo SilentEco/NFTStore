@@ -23,10 +23,7 @@ const Card = ({ props }: CardTypes) => {
           modalOpen ? close() : open();
         }}
       >
-        <img
-          src={"//localhost:1337" + props?.NFT?.data?.attributes?.url!}
-          alt="ERROR"
-        />
+        <img src={props?.NFT?.data?.attributes?.url!} alt="ERROR" />
       </div>
       <p>
         Price: <span>$</span>
