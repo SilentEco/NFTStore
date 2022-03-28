@@ -1,19 +1,41 @@
 import { NftCard } from "generated/graphql";
-import { addAmountDispatch, addNFTDispatch } from "lib/redux/dispatch";
+import {
+  addAmountDispatch,
+  addNFTDispatch,
+  addToCartDispatch,
+} from "lib/redux/dispatch";
 import { addNFT } from "lib/redux/features/nftSlice";
-import { useContext, useEffect, useReducer, useState } from "react";
+import {
+  HTMLAttributes,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import { useDispatch } from "react-redux";
-import styles from "../Card/cardstyle.module.scss";
+import { toast } from "react-toastify";
 
 interface IProps {
   nft: NFT;
+  className: string;
 }
 
 type NFT = NftCard & { isDisabled?: boolean };
 
-const Button = ({ nft }: IProps) => {
+const Button = ({ nft, className, ...props }: IProps) => {
   const [check, setCheck] = useState(Boolean);
   const dispatch = useDispatch();
+
+  const notify = () =>
+    toast.success("Added to cart!", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: false,
+      progress: undefined,
+    });
 
   useEffect(() => {
     if (localStorage.getItem(`${nft!.Title}`) !== null) {
@@ -22,6 +44,8 @@ const Button = ({ nft }: IProps) => {
   }, [check, nft]);
 
   const ClickHandler = () => {
+    notify();
+    addToCartDispatch(dispatch);
     addNFTDispatch(
       nft.Title!,
       nft.Price!,
@@ -32,7 +56,9 @@ const Button = ({ nft }: IProps) => {
   };
   return (
     <>
-      <button onClick={() => ClickHandler()}>Buy</button>
+      <div {...props} className={className} onClick={() => ClickHandler()}>
+        Buy
+      </div>
       {/* {check ? (
         <button disabled={true} onClick={() => ClickHandler()}>
           In cart

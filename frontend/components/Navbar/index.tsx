@@ -1,29 +1,31 @@
-import styles from "./navbar.module.scss";
 import NavIcon from "../../public/img/logocrop.png";
 import Image from "next/image";
-import Link from "next/link";
-import ShoppingCart from "./Shopping cart";
+import ShoppingCart from "./Shoppingcart";
+import { NavBtn } from "./NavBtn";
+import {
+  AiOutlineHome,
+  AiOutlineShoppingCart,
+  AiOutlineInfoCircle,
+} from "react-icons/ai";
 
 const Navbar = () => {
   return (
-    <div className={styles.navbar}>
-      <div className={styles.navBtns}>
-        <Link href="/" passHref>
-          <Image src={NavIcon} className={styles.logo} alt="ERROR" />
-        </Link>
-        <Link href="/" passHref>
-          <button>Home</button>
-        </Link>
-        <Link href="/shop" passHref>
-          <button>Shop</button>
-        </Link>
-        <Link href="/about" passHref>
-          <button>About</button>
-        </Link>
+    <div className={"navbar"}>
+      <div className={"navBtnContainer"}>
+        {/* <NavBtn href="/">
+          <Image src={NavIcon} className={"logo"} alt="ERROR" />
+        </NavBtn> */}
+        <NavBtn href="/">
+          <p>Home</p> <AiOutlineHome />
+        </NavBtn>
+        <NavBtn href="/shop">
+          <p>Shop</p> <AiOutlineShoppingCart />
+        </NavBtn>
+        <NavBtn href="/about">
+          <p>About</p> <AiOutlineInfoCircle />
+        </NavBtn>
       </div>
-      <footer>
-        <ShoppingCart />
-      </footer>
+      <ShoppingCart />
     </div>
   );
 };

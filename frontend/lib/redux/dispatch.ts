@@ -1,6 +1,7 @@
 import { AppDispatch } from "./app/store";
 import { addNFT, removeNFT } from "./features/nftSlice";
 import { addAmount, removeAmount } from "./features/amountSlice";
+import { addToCart, removeFromCart } from "./features/shoppingcartSlice";
 
 export const addNFTDispatch = (
   name: string,
@@ -27,4 +28,12 @@ export const addAmountDispatch = (price: number, dispatch: AppDispatch) => {
 
 export const removeAmountDispatch = (price: number, dispatch: AppDispatch) => {
   dispatch(removeAmount(price));
+};
+
+export const addToCartDispatch = (dispatch: AppDispatch) => {
+  dispatch(addToCart());
+};
+
+export const removeFromCartDispatch = (dispatch: AppDispatch) => {
+  dispatch(removeFromCart());
 };

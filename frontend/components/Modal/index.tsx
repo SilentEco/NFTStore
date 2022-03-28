@@ -1,10 +1,9 @@
 import Backdrop from "./Backdrop";
 import { motion } from "framer-motion";
-import styles from "./Modal.module.scss";
 import React, { useState } from "react";
-import Card from "@components/Card";
 import Button from "@components/Card/Button";
 import { NftCard } from "generated/graphql";
+import { toast } from "react-toastify";
 
 const dropIn = {
   hidden: {
@@ -33,29 +32,32 @@ interface IProps {
 
 const Modal = ({ handleClose, nft }: IProps) => {
   const oneNFT = nft!;
+
   return (
     <Backdrop onClick={handleClose}>
       <motion.div
         onClick={(e) => e.stopPropagation()} // Prevent click from closing modal
-        className={styles.modal}
+        className={"modal"}
         variants={dropIn}
         initial="hidden"
         animate="visible"
         exit="exit"
       >
-        <div className={styles.image}>
-          <img src={"//localhost:1337" + oneNFT.NFT?.data?.attributes?.url} />
+        <div className={"image"}>
+          <img src={oneNFT.NFT?.data?.attributes?.url} />
         </div>
-        <div className={styles.description}>
+        <div className={"description"}>
           <h1>{oneNFT!.Title}</h1>
           <p>{oneNFT!.Description}</p>
           <br />
-          <h3>Created: {oneNFT!.Created}</h3>
-          <h2>
-            Price: <span>$</span>
-            <span>{oneNFT!.Price!}</span>
-          </h2>
-          <Button nft={nft} />
+          <div className="description__subText">
+            <h3>Created: {oneNFT!.Created}</h3>
+            <h3>
+              Price: <span>$</span>
+              <span>{oneNFT!.Price!}</span>
+            </h3>
+          </div>
+          <Button className="modalButton cardButton" nft={nft} />
         </div>
       </motion.div>
     </Backdrop>

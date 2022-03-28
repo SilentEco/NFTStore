@@ -1,13 +1,12 @@
 import Link from "next/link";
-import styles from "../styles/Home.module.scss";
 
 const Home = () => {
   return (
-    <div className={styles.homeWrapper}>
-      <div className={styles.title}>
+    <div className="homeWrapper">
+      <div className={"title"}>
         <p>Welcome</p>
       </div>
-      <div className={styles.bodyText}>
+      <div className={"bodyText"}>
         <article>
           Hello, my name is Lorem ipsum dolor sit amet consectetur adipisicing
           elit. Neque, quaerat dignissimos praesentium distinctio consectetur
@@ -19,11 +18,9 @@ const Home = () => {
           maiores?
         </article>
       </div>
-      <div className={styles.shopbtn}>
-        <Link href="/shop" passHref>
-          <button>Check out the shop</button>
-        </Link>
-      </div>
+      <Link href="/shop" passHref>
+        <a className={"shopbtn"}>Check out the shop</a>
+      </Link>
     </div>
   );
 };

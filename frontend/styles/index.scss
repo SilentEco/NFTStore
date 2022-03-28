@@ -1,0 +1,16 @@
+//Abstracts
+@import "abstracts/variables";
+@import "abstracts/reset";
+@import "abstracts/globals";
+@import "abstracts/breakpoints";
+
+//Pages
+@import "components/About";
+@import "components/Home";
+@import "components/Shop";
+
+//Components
+@import "components/Shoppingcart";
+@import "components/Cardstyle";
+@import "components/Modal";
+@import "components/Navbar";
