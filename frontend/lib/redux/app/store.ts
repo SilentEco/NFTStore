@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import nftReducer from "../features/nftSlice";
 import amountReducer from "../features/amountSlice";
 import cartReducer from "../features/shoppingcartSlice";
@@ -19,13 +19,18 @@ const persistConfig = {
   storage,
 };
 
-const persistCart = persistReducer(persistConfig, cartReducer);
+const combinedReducers = combineReducers({
+  cartReducer,
+  amountReducer,
+  nftReducer,
+});
+const persist = persistReducer(persistConfig, combinedReducers);
 
 export const store = configureStore({
   reducer: {
-    nft: nftReducer,
-    amount: amountReducer,
-    cart: persistCart,
+    nft: persist,
+    amount: persist,
+    cart: persist,
   },
 });
 

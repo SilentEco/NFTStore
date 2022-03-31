@@ -5,7 +5,9 @@ import { BsBasket3 } from "react-icons/bs";
 import { useSelector } from "react-redux";
 
 const ShoppingCart = () => {
-  const amount = useSelector((state: RootState) => state.cart.value);
+  const amount = useSelector(
+    (state: RootState) => state.cart.cartReducer.value
+  );
 
   return (
     <Link href="/shoppingcart" passHref>

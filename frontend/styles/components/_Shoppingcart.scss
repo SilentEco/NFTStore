@@ -41,9 +41,14 @@
     }
     .col4 {
       flex-basis: 25%;
-      &:hover {
-        color: red;
-        cursor: pointer;
+      div {
+        &:hover {
+          color: red;
+          cursor: pointer;
+        }
+        svg {
+          font-size: 25px;
+        }
       }
     }
   }
@@ -66,7 +71,7 @@
     text-align: center;
     background-color: $highlight;
     cursor: pointer;
-
+    transform: translateY(100px);
     transition: all ease-in 0.1s;
     &:hover {
       transform: scale(103%);

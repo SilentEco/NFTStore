@@ -1,0 +1,11 @@
+.drawer {
+  display: block;
+  .listContainer {
+  }
+}
+
+@include xs {
+  .hideDesktop {
+    display: none;
+  }
+}
